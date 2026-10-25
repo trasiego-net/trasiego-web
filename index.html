@@ -502,16 +502,16 @@
 <div class="shell">
   <header class="site">
     <div class="row">
-      <div class="logo"><a href="/trasiego-web/" data-nav="index"><span class="drip"></span>TRASIEGO</a></div>
+      <div class="logo"><a href="/" data-nav="index"><span class="drip"></span>TRASIEGO</a></div>
 
     </div>
     <div class="tagline">cuaderno · Florentino Alonso</div>
     <nav class="tabs">
-      <a href="/trasiego-web/" data-nav="index">Índice</a>
-      <a href="/trasiego-web/hilos" data-nav="hilos">Hilos</a>
-      <a href="/trasiego-web/about" data-nav="about" class="compound-tab"><span>Acerca</span><span>de</span></a>
-      <a href="/trasiego-web/biblio" data-nav="biblio">Biblioteca</a>
-      <a href="/trasiego-web/otros-textos" data-nav="otros" class="compound-tab"><span>Otros</span><span>textos</span></a>
+      <a href="/" data-nav="index">Índice</a>
+      <a href="/hilos" data-nav="hilos">Hilos</a>
+      <a href="/about" data-nav="about" class="compound-tab"><span>Acerca</span><span>de</span></a>
+      <a href="/biblio" data-nav="biblio">Biblioteca</a>
+      <a href="/otros-textos" data-nav="otros" class="compound-tab"><span>Otros</span><span>textos</span></a>
       <div class="search-wrap"><button id="music-toggle" class="music-toggle" type="button" aria-label="Reproducir música" title="Reproducir música">♫</button><input id="search" type="text" placeholder="buscar…"></div>
     </nav>
   </header>
@@ -531,10 +531,10 @@
       <div id="idx-list"></div>
       <div id="idx-grid" class="idx-grid" style="display:none;"></div>
       <div id="no-results" class="no-results" style="display:none;">Sin resultados.</div>
-      <div class="all-pieces-link"><a href="/trasiego-web/todos">Ver todos los Trasiegos →</a></div>
+      <div class="all-pieces-link"><a href="/todos">Ver todos los Trasiegos →</a></div>
       <aside class="cuaderno-extra" aria-label="También en el cuaderno">
         <div class="cuaderno-extra-label">TAMBIÉN EN EL CUADERNO</div>
-        <h2 class="cuaderno-extra-title"><a href="/trasiego-web/otros-textos/dos-bovedas">Dos bóvedas</a></h2>
+        <h2 class="cuaderno-extra-title"><a href="/otros-textos/dos-bovedas">Dos bóvedas</a></h2>
         <div class="cuaderno-extra-meta">Premios Princesa de Asturias · Artículo · 24 oct 2026</div>
       </aside>
     </section>
@@ -546,7 +546,7 @@
 
     <section id="view-otros" class="view">
       <div class="catalog-heading"><p class="otros-intro">Artículos y escritos que no forman parte de la serie TRASIEGO.</p></div>
-      <div class="other-entry"><h2><a href="/trasiego-web/otros-textos/dos-bovedas">Dos bóvedas</a></h2><p>Premios Princesa de Asturias · Artículo · 24 oct 2026</p></div>
+      <div class="other-entry"><h2><a href="/otros-textos/dos-bovedas">Dos bóvedas</a></h2><p>Premios Princesa de Asturias · Artículo · 24 oct 2026</p></div>
     </section>
 
     <section id="view-other-article" class="view"></section>
@@ -555,7 +555,7 @@
 
     <section id="view-notfound" class="view about">
       <p>Esta página no existe.</p>
-      <p><a href="/trasiego-web/">← volver al índice</a></p>
+      <p><a href="/">← volver al índice</a></p>
     </section>
 
     <section id="view-about" class="view about">
@@ -736,7 +736,7 @@
 
     <section id="view-hilo" class="view">
       <div class="essay-top">
-        <a href="/trasiego-web/hilos" class="back">← hilos</a>
+        <a href="/hilos" class="back">← hilos</a>
       </div>
       <h1 class="piece-title" id="hilo-title"></h1>
       <div class="piece-meta"><span id="hilo-desc"></span></div>
@@ -753,9 +753,9 @@
 
 <div class="lightbox" id="lightbox"><img src="" alt=""></div>
 
-<audio id="site-music" src="/trasiego-web/trasiego%202.mp3" preload="auto" loop></audio>
+<audio id="site-music" src="/trasiego%202.mp3" preload="auto" loop></audio>
 
-<script src="/trasiego-web/content.js"></script>
+<script src="/content.js"></script>
 
 <script>
 (function(){
@@ -824,7 +824,7 @@ function playMusic(){
 }
 
 function syncMusicToRoute(){
-  const path = location.pathname.replace(/^\/trasiego-web(?=\/|$)/, "").replace(/\/+$/, "") || "/";
+  const path = location.pathname.replace(/\/+$/, "") || "/";
   if(path.startsWith("/pieza/") && musicEnabled) fadeOutMusic();
 }
 
@@ -832,7 +832,7 @@ if(musicToggle){
   musicToggle.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const path = location.pathname.replace(/^\/trasiego-web(?=\/|$)/, "").replace(/\/+$/, "") || "/";
+    const path = location.pathname.replace(/\/+$/, "") || "/";
     if(path.startsWith("/pieza/")) return;
     if(musicEnabled) fadeOutMusic(450);
     else playMusic();
@@ -901,7 +901,7 @@ function renderHilosList(){
   hilosListEl.innerHTML = hilos.map(h => {
     const n = piecesForHilo(h).length;
     return `
-      <a class="hilo-item" href="/trasiego-web/hilos/${h.id}">
+      <a class="hilo-item" href="/hilos/${h.id}">
         <div class="hn">${h.name}</div>
         <div class="hd">${h.desc}</div>
         <div class="hc">${n} trasiego${n===1?"":"s"} →</div>
@@ -919,7 +919,7 @@ function renderHiloDetail(id){
   hiloDescEl.textContent = h.desc;
   const hp = piecesForHilo(h);
   hiloPiecesEl.innerHTML = hp.map(p => `
-    <a href="/trasiego-web/pieza/${p.slug}" class="idx-row">
+    <a href="/pieza/${p.slug}" class="idx-row">
       <div class="n mono">${String(p.pubNumber).padStart(2,"0")}</div>
       <div class="mid">
         <div class="title disp">${p.title}</div>
@@ -1052,9 +1052,9 @@ function renderHero(){
   const latest = pieces[0];
   heroEl.innerHTML = `
     <div class="eyebrow">${fechaBreve(latest.dateLabel)}</div>
-    <h2><a href="/trasiego-web/pieza/${latest.slug}">${latest.title}</a></h2>
+    <h2><a href="/pieza/${latest.slug}">${latest.title}</a></h2>
     <p class="excerpt">${latest.body[0]}</p>
-    <div class="hero-foot"><a href="/trasiego-web/pieza/${latest.slug}">Leer →</a></div>
+    <div class="hero-foot"><a href="/pieza/${latest.slug}">Leer →</a></div>
   `;
 }
 renderHero();
@@ -1152,7 +1152,7 @@ function renderEssay(slug){
 
   essayView.innerHTML = `
     <div class="essay-top">
-      <a href="/trasiego-web/" class="back">← índice</a>
+      <a href="/" class="back">← índice</a>
       <span>${String(p.pubNumber).padStart(2,"0")} / ${CATALOG_TOTAL}</span>
     </div>
     <h1 class="piece-title">${p.title}</h1>
@@ -1213,12 +1213,12 @@ function setMeta(title, desc){
   const m = document.querySelector('meta[name="description"]');
   if(m && desc) m.setAttribute("content", desc);
   const c = document.querySelector('link[rel="canonical"]');
-  if(c) c.setAttribute("href", "https://trasiego.net" + (location.pathname.replace(/^\/trasiego-web(?=\/|$)/, "").replace(/\/+$/, "") || "/"));
+  if(c) c.setAttribute("href", "https://trasiego.net" + (location.pathname.replace(/\/+$/, "") || "/"));
 }
 
 function route(){
   searchResultsEl.classList.remove("active");
-  let path = location.pathname.replace(/^\/trasiego-web(?=\/|$)/, "").replace(/\/+$/, "") || "/";
+  let path = location.pathname.replace(/\/+$/, "") || "/";
 
   if(path === "/" ){
     show("index");
@@ -1291,7 +1291,7 @@ document.addEventListener("click", (e) => {
   if(a.hasAttribute("download")) return;
   let url;
   try{ url = new URL(a.getAttribute("href"), location.href); }catch(err){ return; }
-  if(url.origin !== location.origin || !url.pathname.startsWith("/trasiego-web/")) return;
+  if(url.origin !== location.origin || !url.pathname.startsWith("/")) return;
   if(a.getAttribute("href").startsWith("#")) return; // anclas internas, si las hubiera
   e.preventDefault();
   if(searchInput) searchInput.value = "";
@@ -1311,7 +1311,7 @@ window.addEventListener("popstate", (e) => {
   const h = location.hash;
   if(h && h.startsWith("#/")){
     const newPath = h.slice(1) || "/";
-    history.replaceState(null, "", "/trasiego-web" + newPath);
+    history.replaceState(null, "", newPath);
   }
 })();
 
